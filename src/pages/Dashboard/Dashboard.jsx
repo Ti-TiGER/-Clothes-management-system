@@ -8,7 +8,6 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import MuiDrawer from "@mui/material/Drawer";
 import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -19,6 +18,7 @@ import Badge from "@mui/material/Badge";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 
@@ -32,6 +32,7 @@ import "@fontsource/roboto/700.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 
 import { mainListItems, secondaryListItems } from "./listItems";
@@ -41,6 +42,8 @@ import Chart from "./Chart";
 import Product from "./Product";
 import Orders from "./Orders";
 import Stock from "./Stock";
+import Exported from "./Exported";
+import Remaining from "./Remaining";
 
 function Copyright(props) {
   return (
@@ -183,7 +186,7 @@ function DashboardContent(props) {
           <Paper
             square
             elevation={3}
-            sx={{ display: "flex", p: 0.5, pl: 5, ml: 8.88 }}
+            sx={{ display: "flex", p: 0.5, pl: 5, ml: 9 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={2} sm={4} md={6}>
@@ -236,7 +239,6 @@ function DashboardContent(props) {
         <Box
           component="main"
           sx={{
-            border: 1,
             flexGrow: 0,
             display: "flex",
             marginTop: 6,
@@ -244,19 +246,27 @@ function DashboardContent(props) {
             borderColor: "primary.main",
           }}
         >
-          <Container maxWidth="xlg" sx={{ border: 1, mt: 15, ml: 4, mb: 4 }}>
+          <Container maxWidth="xlg" sx={{ mt: 15, mb: 4 }}>
             <Grid container>
               {/* Fluid grids */}
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 {/* Tags Counted */}
-                <Grid item xs={12} md={4} lg={3}>
+                <Box
+                  sx={{
+                    pl: 2,
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   <Paper
                     sx={{
                       p: 2,
-                      m: 2,
+                      mb: 2,
                       display: "flex",
+                      borderRadius: "11px",
                       flexDirection: "column",
-                      height: 96,
+                      height: 145,
                       width: 286,
                     }}
                   >
@@ -267,15 +277,15 @@ function DashboardContent(props) {
                     </Typography>
                     <Product />
                   </Paper>
-                </Grid>
 
-                {/* Tags Counted */}
-                <Grid item xs={12} md={4} lg={3}>
+                  {/* Tags Counted */}
+
                   <Paper
                     sx={{
                       p: 2,
-                      m: 2,
+                      mb: 2,
                       display: "flex",
+                      borderRadius: "11px",
                       flexDirection: "column",
                       height: 96,
                       width: 286,
@@ -290,64 +300,135 @@ function DashboardContent(props) {
                       <Stock />
                     </Box>
                   </Paper>
-                </Grid>
-                {/* Tags Counted */}
-                <Grid item xs={12} md={4} lg={3}>
+
+                  {/* Tags Counted */}
+
                   <Paper
                     sx={{
                       p: 2,
+                      mb: 2,
                       display: "flex",
+                      borderRadius: "11px",
                       flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "flex-end",
-                      height: 145,
+                      height: 96,
                       width: 286,
-                      paddingTop: 8,
                     }}
                   >
-                    <Product />
+                    <Typography
+                      sx={{ justifyContent: "flex-start", fontSize: "15px" }}
+                    >
+                      Stock Exported
+                    </Typography>
+                    <Box sx={{ alignItems: "center" }}>
+                      <Stock />
+                    </Box>
                   </Paper>
-                </Grid>
-                {/* Tags Counted */}
-                <Grid item xs={12} md={4} lg={3}>
+
+                  {/* Tags Counted */}
+
                   <Paper
                     sx={{
                       p: 2,
+                      mb: 2,
                       display: "flex",
+                      borderRadius: "11px",
                       flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "flex-end",
-                      height: 145,
+                      height: 96,
                       width: 286,
-                      paddingTop: 8,
                     }}
                   >
-                    <Product />
+                    <Typography
+                      sx={{ justifyContent: "flex-start", fontSize: "15px" }}
+                    >
+                      Stock Remaining
+                    </Typography>
+                    <Box sx={{ alignItems: "center" }}>
+                      <Stock />
+                    </Box>
                   </Paper>
-                </Grid>
+
+                  <Paper
+                    sx={{
+                      p: 2,
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "11px",
+                      flexDirection: "column",
+                      height: 206,
+                      width: 292,
+                    }}
+                  >
+                    <Typography
+                      sx={{ justifyContent: "flex-start", fontSize: "16px" }}
+                    >
+                      <ShowChartOutlinedIcon sx={{ color: "#DB5116" }} />
+                      Stock
+                    </Typography>
+                    <Typography
+                      sx={{ justifyContent: "flex-start", fontSize: "16px" }}
+                    >
+                      <ShowChartOutlinedIcon sx={{ color: "#0A3000" }} />
+                      Exported
+                    </Typography>
+                    <Typography
+                      sx={{ justifyContent: "flex-start", fontSize: "16px" }}
+                    >
+                      <ShowChartOutlinedIcon sx={{ color: "#000CF9" }} />
+                      Remaining
+                    </Typography>
+                  </Paper>
+                </Box>
               </Grid>
 
               {/* Fluid grids */}
-              <Grid item xs={8}>
+              <Grid container item xs={9} sx={{ display: "flex" }}>
                 {/* Chart */}
-                <Grid item xs={12} md={8} lg={9}>
-                  <Paper
-                    sx={{
-                      p: 2,
-                      display: "flex",
-                      flexDirection: "column",
-                      height: 260,
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Chart />
-                  </Paper>
-                </Grid>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+
+                <Paper
+                  sx={{
+                    p: 2,
+                    pl: 4,
+                    mr: 5.5,
+                    display: "flex",
+                    flexDirection: "column",
+                    width: 457,
+                    height: 243,
+                    borderRadius: "11px",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Exported />
+                </Paper>
+
+                <Paper
+                  sx={{
+                    p: 2,
+                    mb: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    width: 457,
+                    height: 243,
+                    borderRadius: "11px",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Remaining />
+                </Paper>
+
+                {/* Recent Orders */}
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    borderRadius: "11px",
+                    width: 956,
+                    height: 444,
+                  }}
+                >
+                  <Chart />
                 </Paper>
               </Grid>
             </Grid>

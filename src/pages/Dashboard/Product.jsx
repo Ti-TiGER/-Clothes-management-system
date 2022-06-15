@@ -11,11 +11,16 @@ function preventDefault(event) {
 export default function Product() {
   return (
     <React.Fragment>
-      <Typography component="p" variant="h4" sx={{ textAlign: "center" }}>
-        5000
+      <Typography
+        color="primary"
+        component="p"
+        variant="h3"
+        sx={{ textAlign: "center", pt: 1.5 }}
+      >
+        500,000
       </Typography>
 
-      <Typography color="text.secondary" sx={{ flex: 1 }}>
+      {/* <Typography color="text.secondary" sx={{ flex: 1 }}>
         <SimpleDateTime
           dateSeparator="/"
           format="MYD"
@@ -24,7 +29,7 @@ export default function Product() {
         >
           {new Date()}
         </SimpleDateTime>
-      </Typography>
+      </Typography> */}
     </React.Fragment>
   );
 }
